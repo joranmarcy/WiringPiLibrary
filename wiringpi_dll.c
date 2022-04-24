@@ -57,7 +57,7 @@ int detectI2C(int addr)
 	}
 }
 
-void shiftOut(int dPin, int cPin, int order, int val)
+void _shiftOut(int dPin, int cPin, int order, int val)
 {
 	int i;
 	for (i = 0; i < 8; i++)
@@ -170,6 +170,6 @@ void printLCD(char *arr, int line)
 void ledBarPercent(int percent)
 {
 	digitalWrite(latchPin, LOW);									// Output low level to latchPin
-	shiftOut(dataPin, clockPin, LSBFIRST, percentToChar(percent)); // Send serial data to 74HC595
+	_shiftOut(dataPin, clockPin, LSBFIRST, percentToChar(percent)); // Send serial data to 74HC595
 	digitalWrite(latchPin, HIGH);									// Output high level to latchPin, and 74HC595 will update the data to the parallel output port.			
 }
